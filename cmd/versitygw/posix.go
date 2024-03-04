@@ -35,6 +35,20 @@ top level: /mnt/fs/gwroot
 bucket: mybucket
 object: a/b/c/myobject
 will be translated into the file /mnt/fs/gwroot/mybucket/a/b/c/myobject`,
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name: "posix-perm-strategy",
+				Value: "s3-acl",
+				Usage: "permission strategy to use with posix backend",
+				Action: func(ctx *cli.Context, value string) error {
+					if value != "s3-acl" && value != "posix" {
+						return fmt.Errorf("invalid permission strategy: %s", value)
+					}
+
+					return nil
+				},
+			},
+		},
 		Action: runPosix,
 	}
 }

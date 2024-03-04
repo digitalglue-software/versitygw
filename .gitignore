@@ -46,3 +46,6 @@ tests/.secrets
 # env files for testing
 .env*
 !.env.default
+
+# start script has LDAP password in it
+start.sh
