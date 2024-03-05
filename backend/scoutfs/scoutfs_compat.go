@@ -33,7 +33,7 @@ import (
 )
 
 func New(rootdir string, opts ...Option) (*ScoutFS, error) {
-	p, err := posix.New(rootdir)
+	p, err := posix.New(rootdir, "s3-acl")
 	if err != nil {
 		return nil, err
 	}

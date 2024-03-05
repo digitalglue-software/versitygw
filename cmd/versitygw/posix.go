@@ -58,7 +58,7 @@ func runPosix(ctx *cli.Context) error {
 		return fmt.Errorf("no directory provided for operation")
 	}
 
-	be, err := posix.New(ctx.Args().Get(0))
+	be, err := posix.New(ctx.Args().Get(0), ctx.String("posix-perm-strategy"))
 	if err != nil {
 		return fmt.Errorf("init posix: %v", err)
 	}
